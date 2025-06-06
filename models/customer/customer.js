@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
     res.status(201).send("API triggered");
 });
 
-// Create customer
+// Create customer API
 app.post('/customer', async (req, res) => {
     const { name, age, address } = req.body;
     const customer = new Customer({ name, age, address });
@@ -20,13 +20,13 @@ app.post('/customer', async (req, res) => {
     res.status(201).json(customer);
 });
 
-// Get all customer
+// Get all customer API
 app.get('/customers', async (req, res) => {
     const customers = await Customer.find();
     res.json(customers);
 });
 
-// Get cutomer by id
+// Get cutomer by id API
 app.get('/customer/:id', async (req, res) => {
     const customer = await Customer.findById(req.params.id);
     if (!customer) {
